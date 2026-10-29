@@ -174,7 +174,7 @@ std::string Renderer::renderHistogram(
 
     std::size_t maxCount = 1;
     for (const auto& bin : bins) {
-        maxCount = std::max(maxCount, bin.count);
+        maxCount = std::max(maxCount, bin.count());
     }
 
     double plotLeft = LEFT;
@@ -206,7 +206,7 @@ std::string Renderer::renderHistogram(
     for (std::size_t i = 0; i < bins.size(); ++i) {
         const auto& bin = bins[i];
         double x = plotLeft + i * barWidth;
-        double y = yAxis.scale(static_cast<double>(bin.count));
+        double y = yAxis.scale(static_cast<double>(bin.count()));
 
         svg << "<rect x=\"" << x << "\" y=\"" << y
             << "\" width=\"" << barWidth
@@ -217,7 +217,7 @@ std::string Renderer::renderHistogram(
             << "\" y=\"" << (plotBottom + 18)
             << "\" text-anchor=\"middle\" font-size=\"10\""
             << " font-family=\"sans-serif\">"
-            << number(bin.lower, 1) << "</text>\n";
+            << number(bin.lower(), 1) << "</text>\n";
     }
 
     for (double tick : yAxis.ticks()) {

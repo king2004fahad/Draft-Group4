@@ -1,6 +1,7 @@
 #include "Histogram.hpp"
 
 #include <algorithm>
+#include <cmath>
 #include <stdexcept>
 
 // I find the range and bin width before counting the values.
@@ -16,11 +17,20 @@ std::vector<HistogramBin> Histogram::build(
         throw std::invalid_argument("Histogram bin count must be greater than zero.");
     }
 
+    // Non-finite values make range and bin-index calculations unreliable.
+    for (double value : data) {
+        if (!std::isfinite(value)) {
+            throw std::invalid_argument("Histogram values must be finite.");
+        }
+    }
+
     double minValue = *std::min_element(data.begin(), data.end());
     double maxValue = *std::max_element(data.begin(), data.end());
 
     if (minValue == maxValue) {
-        return {{minValue, maxValue, data.size()}};
+        std::vector<HistogramBin> bins;
+        bins.push_back(HistogramBin(minValue, maxValue, data.size()));
+        return bins;
     }
 
     double binWidth = (maxValue - minValue) / static_cast<double>(binCount);
@@ -34,7 +44,7 @@ std::vector<HistogramBin> Histogram::build(
             ? maxValue
             : minValue + static_cast<double>(i + 1) * binWidth;
 
-        bins.push_back({lower, upper, 0});
+        bins.push_back(HistogramBin(lower, upper, 0));
     }
 
     // A value on the final boundary must still count in the last bin.
@@ -47,7 +57,7 @@ std::vector<HistogramBin> Histogram::build(
             index = binCount - 1;
         }
 
-        ++bins[index].count;
+        ++bins[index].count_;
     }
 
     return bins;
