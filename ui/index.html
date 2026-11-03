@@ -24,6 +24,37 @@ button.secondary:focus-visible{outline-color:#6097e8}
 .preview img{display:block;width:100%;max-width:880px;height:auto}.placeholder{color:#73849b;text-align:center}
 .toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px}.toolbar span{font-size:12px;color:#64748b}
 @media(max-width:830px){main{grid-template-columns:1fr}.preview{min-height:280px}}
+:root{color:#172b46;background:#eef3fa}
+body{min-height:100vh;background:radial-gradient(ellipse at 10% 12%,#dceaff 0,transparent 34%),radial-gradient(ellipse at 92% 78%,#e4f0ff 0,transparent 30%),#f3f6fb}
+header{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(120deg,#102540 0%,#183b65 58%,#24528a 100%);padding-top:30px;padding-bottom:32px}
+header:after{position:absolute;z-index:-1;content:"";width:310px;height:310px;right:8%;top:-205px;border:1px solid #ffffff20;border-radius:50%;box-shadow:0 0 0 34px #ffffff08,0 0 0 70px #ffffff06}
+header small{display:inline-block;color:#bfd6f5;font-size:11px;font-weight:750;letter-spacing:.14em}
+header h1{margin:8px 0 6px;font-size:clamp(28px,4vw,36px);letter-spacing:-.035em}
+header p{max-width:620px;font-size:14px;line-height:1.6}
+main{position:relative;margin-top:30px;margin-bottom:44px;gap:24px}
+.panel{border-color:#e0e8f3;border-radius:18px;padding:clamp(20px,3vw,28px);box-shadow:0 14px 36px #19385c0b,0 2px 6px #19385c08;transition:box-shadow .2s ease,border-color .2s ease}
+.panel:hover{border-color:#d1deee;box-shadow:0 18px 42px #19385c12,0 3px 8px #19385c08}
+h2{color:#1a3557;font-size:17px;letter-spacing:-.015em;margin-bottom:22px}
+label{color:#334b69;font-size:12px;letter-spacing:.015em}
+input,select,textarea{border-color:#d4deeb;border-radius:10px;color:#213752;box-shadow:0 1px 2px #19385c08;transition:border-color .16s ease,box-shadow .16s ease,background .16s ease}
+input:hover,select:hover,textarea:hover{border-color:#afc2dd}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:none;border-color:#4c83d5;box-shadow:0 0 0 3px #4c83d526}
+input[type=file]{background:#f8faff;color:#536985}
+input[type=file]::file-selector-button{margin-right:12px;padding:8px 12px;border:1px solid #c9d9f0;border-radius:7px;background:#edf4ff;color:#285694;font:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:background .16s ease,border-color .16s ease}
+input[type=file]::file-selector-button:hover{border-color:#a9c5ed;background:#e1edff}
+select{appearance:none;padding-right:38px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23536b8b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.muted{color:#71829a;font-size:12px}
+.status{border:1px solid #dce8f8;border-radius:10px;background:linear-gradient(120deg,#f3f8ff,#edf4ff);color:#34577f;line-height:1.5}
+.status.error{border-color:#f4d8d5;background:#fff3f1;color:#9b2e25}
+.preview{position:relative;min-height:460px;border:1px solid #e1e9f3;border-radius:14px;background-color:#f9fbfe;background-image:radial-gradient(#dce5f1 1px,transparent 1px);background-size:18px 18px}
+.preview img{max-width:calc(100% - 32px);max-height:620px;object-fit:contain;filter:drop-shadow(0 8px 18px #19385c12)}
+.placeholder{padding:24px;color:#7a8da7;font-size:14px}
+.toolbar{margin-bottom:16px}
+.toolbar h2{margin-bottom:0}
+.toolbar span{padding:6px 9px;border:1px solid #e1eaf5;border-radius:999px;background:#f5f8fc;color:#627793;font-weight:650;letter-spacing:.02em}
+@media(max-width:830px){main{margin-top:20px}.preview{min-height:320px}.panel:hover{box-shadow:0 14px 36px #19385c0b,0 2px 6px #19385c08}}
+@media(max-width:480px){header{padding-top:24px;padding-bottom:26px}.toolbar{align-items:flex-start;flex-direction:column;gap:8px}.preview{min-height:260px}}
+@media(prefers-reduced-motion:reduce){.panel,input,select,textarea,input[type=file]::file-selector-button{transition:none}}
 </style></head>
 <body><header><small>GROUP 4 · C++ DATA VISUALIZATION LIBRARY</small><h1>Graph Studio</h1><p>Load data, choose a chart, preview it and export an SVG using our C++ modules.</p></header>
 <main><section class="panel">
